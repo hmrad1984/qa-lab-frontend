@@ -1,15 +1,39 @@
-import { mockBugReports } from "../data/mockBugReports";
+import { useEffect, useState } from "react";
 import BugReportCard from "../components/BugReportCard";
 
 export default function BugReportListPage() {
+  const [bugReports, setBugReports] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // TODO: Replace this with your actual backend URL
+  const BASE_URL = "http://localhost:8080";
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/api/bugs`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch bug reports");
+        return res.json();
+      })
+      .then((data) => setBugReports(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div className="p-4 space-y-4">
-      <h1 className="text-2xl font-bold">Bug Reports</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {mockBugReports.map((report) => (
-          <BugReportCard key={report.id} report={report} />
-        ))}
-      </div>
+      <h1 className="text-2xl font-bold text-white">Bug Reports</h1>
+
+      {loading && <p className="text-zinc-300">Loading...</p>}
+      {error && <p className="text-red-500">Error: {error}</p>}
+
+      {!loading && !error && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {bugReports.map((report) => (
+            <BugReportCard key={report.id} report={report} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
