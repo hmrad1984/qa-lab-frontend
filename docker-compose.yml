@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  frontend:
+    build: .
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_BASE_URL=http://bugtracker-app:8080
+    networks:
+      - shared-app-network
+
+networks:
+  shared-app-network:
+    external: true

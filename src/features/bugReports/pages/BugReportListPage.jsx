@@ -7,7 +7,7 @@ export default function BugReportListPage() {
   const [error, setError] = useState(null);
 
   // TODO: Replace this with your actual backend URL
-  const BASE_URL = "http://localhost:8080";
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     fetch(`${BASE_URL}/api/bugs`)
