@@ -2,6 +2,8 @@
 
 This is the frontend application for the QA Lab project—a hands-on practice platform designed to simulate real-world software testing and automation scenarios. It connects to a Spring Boot backend via RESTful web services and is built using a modern React-based stack.
 
+![coverage report](https://gitlab.com/hmrad1984/qa-lab-frontend/badges/main/coverage.svg)
+
 ## 🛠️ Tech Stack
 
 | Layer      | Technology                                                                                                                              |

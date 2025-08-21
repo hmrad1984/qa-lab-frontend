@@ -17,14 +17,18 @@ install:
 
 test:
   stage: test
+  image: node:20
   script:
-    - npm run test:ci
+    - npm ci
+    - npm run test:coverage
   artifacts:
     when: always
-    reports:
-      junit: junit.xml
     paths:
       - coverage/
+    reports:
+      coverage_report:
+        coverage_format: lcov
+        path: coverage/lcov.info
 
 build:
   stage: build
