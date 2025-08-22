@@ -2,7 +2,13 @@
 
 This is the frontend application for the QA Lab project—a hands-on practice platform designed to simulate real-world software testing and automation scenarios. It connects to a Spring Boot backend via RESTful web services and is built using a modern React-based stack.
 
+
+
+## 🧪 Test Coverage
+
 ![coverage report](https://gitlab.com/hmrad1984/qa-lab-frontend/badges/master/coverage.svg)
+
+**Note:** The coverage badge may show "unknown" until the GitLab CI pipeline runs and generates coverage reports. Coverage is calculated only for actively tested components, excluding configuration files and untested utilities.
 
 ## 🛠️ Tech Stack
 
@@ -32,7 +38,8 @@ src/
 
 - [x] Project scaffolded with Vite + React
 - [x] Testing environment with Vitest + RTL
-- [ ] Bug report listing page (mocked, then API-backed)
+- [x] Bug report listing page (mocked, then API-backed)
+- [x] Bug report card component with severity styling
 - [ ] Create/edit/delete bug reports
 - [ ] Input validation and error handling
 - [ ] Testing: unit, integration, and E2E
@@ -43,23 +50,37 @@ src/
 
 ```bash
 npm install
-
 ```
 
 ### Run the Dev Server
 
 ```bash
-
 npm run dev
-
 ```
 
 ### Run Tests
 
 ```bash
-npx vitest
+# Run tests in watch mode
+npm test
 
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests for CI/CD
+npm run test:ci
 ```
+
+## 🧪 Testing
+
+The project uses a comprehensive testing setup:
+
+- **Vitest**: Fast unit testing framework
+- **React Testing Library**: Component testing utilities
+- **Coverage**: V8 coverage provider with LCOV and HTML reports
+- **CI/CD**: GitLab CI configured with coverage reporting
+
+Tests are located alongside the components they test, following the feature-first organization pattern.
 
 🔗 Backend
 This frontend connects to a Spring Boot REST API. Make sure the backend server is running and reachable. API base URL will be configured soon.

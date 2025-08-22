@@ -1,4 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
+import { act } from "react";
 import BugReportListPage from "./BugReportListPage";
 import { vi } from "vitest";
 
@@ -37,12 +38,16 @@ describe("BugReportListPage", () => {
   });
 
   test("renders the heading", async () => {
-    render(<BugReportListPage />);
+    await act(async () => {
+      render(<BugReportListPage />);
+    });
     expect(screen.getByText("Bug Reports")).toBeInTheDocument();
   });
 
   test("renders all bug report cards from API", async () => {
-    render(<BugReportListPage />);
+    await act(async () => {
+      render(<BugReportListPage />);
+    });
 
     // Wait for items to appear
     await waitFor(() => {
@@ -52,7 +57,9 @@ describe("BugReportListPage", () => {
   });
 
   test("renders status and severity for each report", async () => {
-    render(<BugReportListPage />);
+    await act(async () => {
+      render(<BugReportListPage />);
+    });
 
     await waitFor(() => {
       expect(screen.getByText(/Status: OPEN/)).toBeInTheDocument();

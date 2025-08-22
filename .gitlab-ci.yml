@@ -21,6 +21,7 @@ test:
   script:
     - npm ci
     - npm run test:coverage
+  coverage: '/All files\s+\|\s+(\d+\.?\d*)\s+\|\s+\d+\.?\d*\s+\|\s+\d+\.?\d*\s+\|\s+\d+\.?\d*\|/'
   artifacts:
     when: always
     paths:
