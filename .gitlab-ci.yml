@@ -22,7 +22,7 @@ test:
     - npm ci
     - npm run test:coverage
     - echo "Coverage output:"
-    - npm run test:coverage | Select-String "All files"
+    - npm run test:coverage | grep "All files"
   coverage: '/All files\s+\|\s+(\d+)\s+\|/'
   artifacts:
     when: always
