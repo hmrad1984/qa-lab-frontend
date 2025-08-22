@@ -21,7 +21,9 @@ test:
   script:
     - npm ci
     - npm run test:coverage
-  coverage: '/All files\s+\|\s+(\d+\.?\d*)\s+\|\s+\d+\.?\d*\s+\|\s+\d+\.?\d*\s+\|\s+\d+\.?\d*\|/'
+    - echo "Coverage output:"
+    - npm run test:coverage | Select-String "All files"
+  coverage: '/All files\s+\|\s+(\d+)\s+\|/'
   artifacts:
     when: always
     paths:
