@@ -1,0 +1,44 @@
+{
+  "consumer": {
+    "name": "Frontend-QALab"
+  },
+  "interactions": [
+    {
+      "description": "a request for bug reports",
+      "request": {
+        "method": "GET",
+        "path": "/api/bugs"
+      },
+      "response": {
+        "body": [
+          {
+            "description": "Button misaligned",
+            "id": 1,
+            "severity": "HIGH",
+            "status": "OPEN",
+            "title": "UI Bug"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "15.0.1"
+    },
+    "pactRust": {
+      "ffi": "0.4.22",
+      "models": "1.2.3"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "Backend-QALab"
+  }
+}
